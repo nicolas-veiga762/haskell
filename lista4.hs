@@ -1,6 +1,11 @@
 -- funções para aprender: foldr, filter, zip, repeat, words, lines, all, map
 
-import Data.List (sortBy)
+import Data.List (sortBy, groupBy)
+import Data.Function (on)
+
+type Doc = String
+type Line = String
+type Word' = String
 
 --a função do proprio haskell
 
@@ -16,3 +21,14 @@ allNumWords ((n, x):xs) = zip (repeat n) (words x) ++ allNumWords xs
 --d
 sortLs [] = []
 sortLs x = sortBy (\(_, a) (_, b) -> compare a b) x
+
+--e
+almalgamate xs = map (\ws -> (map fst ws, snd (head ws))) (groupBy (\x y -> snd x == snd y) (sortLs xs))
+
+--f
+shorten = map (\(ns, w) -> (unique ns, w))
+unique = foldr (\x seen -> if x `elem` seen then seen else x : seen) []
+
+--makeindex
+makeindex txt = shorten . almalgamate . sortLs . allNumWords . numLines $ txt
+formatIndex xs = unlines [w ++ " - " ++ show ns | (ns, w) <- xs]
