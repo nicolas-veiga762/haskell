@@ -31,4 +31,3 @@ unique = foldr (\x seen -> if x `elem` seen then seen else x : seen) []
 
 --makeindex
 makeindex txt = shorten . almalgamate . sortLs . allNumWords . numLines $ txt
-formatIndex xs = unlines [w ++ " - " ++ show ns | (ns, w) <- xs]
