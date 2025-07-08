@@ -1,4 +1,4 @@
--- funções para aprender: foldr, filter, zip, repeat, words, lines, all, map
+-- funções para aprender: foldr, filter, zip, repeat, words, lines, all, map, compare
 
 import Data.List (sortBy, groupBy)
 import Data.Function (on)
