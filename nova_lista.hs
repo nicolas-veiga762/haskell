@@ -9,14 +9,12 @@ aux1 :: Integer -> [Integer]
 aux1 a = if a <= 1 then [1] else a : aux1 (a -1)
 fatorial n = foldr (*) 1 (aux1 n)
 
--- 4. Calcula o MDC usando o algoritmo de Euclides
-mdc a b = undefined
-
 -- 5. Verifica se uma string é um palíndromo
-palindromo s = undefined
+palindromo s = if s == reverse s then True else False
 
 -- 6. Conta quantas vezes um elemento aparece na lista
-contaElem x xs = undefined
+aux3 n x = n == x
+contaElem n xs = length (filter (aux3 n) xs)
 
 -- 7. Dobra apenas os números pares da lista
 dobrarPares xs = undefined
