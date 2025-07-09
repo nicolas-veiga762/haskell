@@ -52,3 +52,25 @@ reversoPalavras s = unwords (reverse (words s))
 -- 15. Extrai apenas os números de uma string
 aux7 a = a `elem` "1234567890"
 soNumeros s = filter (aux7) s
+
+--3 da prova
+replicar 0 _ = []  
+replicar n [] = []  
+replicar n (x:xs) = replicate n x ++ replicar n xs
+
+--4 da prova
+fatiar a b xs = take (b - a + 1) (drop a xs)
+
+--2 prova do semestre passado
+compDuplas [] = []
+compDuplas ((x,y): xs) = (y , x):compDuplas xs
+
+--3 prova do semestre passado
+zip' [] ys = []
+zip' xs [] = []
+zip' (x:xs) (y:ys) = (x, y): zip' xs ys
+
+--4 prova do semestre passado
+semVogal xs = map (filter (`notElem` "aeiouAEIOU")) xs
+
+--Isso foi foda para caralho
