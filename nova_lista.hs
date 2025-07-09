@@ -39,13 +39,16 @@ inserirOrdenado e (x:xs) = if e <= x then e:x:xs else x : inserirOrdenado e xs
 maiusculas s = map toUpper s
 
 -- 12. Conta o número de vogais em uma string
-contaVogais s = undefined
+aux6 c = c `elem` "aeiouAEIOU"
+contaVogais s = length (filter (aux6) s)
 
 -- 13. Remove todos os espaços de uma string
-removeEspacos s = undefined
+removeEspacos :: String -> String
+removeEspacos s = filter (/= ' ') s
 
 -- 14. Inverte a ordem das palavras de uma frase
-reversoPalavras s = undefined
+reversoPalavras s = unwords (reverse (words s))
 
 -- 15. Extrai apenas os números de uma string
-soNumeros s = undefined
+aux7 a = a `elem` "1234567890"
+soNumeros s = filter (aux7) s
