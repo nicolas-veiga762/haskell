@@ -1,3 +1,5 @@
+import Data.Char (toUpper)
+
 -- 1. Retorna o maior entre três números
 maior3 a b c = if a>b && a>c then a else if b>a && b>c then b else c 
 
@@ -5,7 +7,6 @@ maior3 a b c = if a>b && a>c then a else if b>a && b>c then b else c
 parImpar n = if n `mod` 2 == 0 then "par" else "impar"
 
 -- 3. Calcula o fatorial de um número
-aux1 :: Integer -> [Integer]
 aux1 a = if a <= 1 then [1] else a : aux1 (a -1)
 fatorial n = foldr (*) 1 (aux1 n)
 
@@ -13,23 +14,29 @@ fatorial n = foldr (*) 1 (aux1 n)
 palindromo s = if s == reverse s then True else False
 
 -- 6. Conta quantas vezes um elemento aparece na lista
-aux3 n x = n == x
-contaElem n xs = length (filter (aux3 n) xs)
+aux2 n x = n == x
+contaElem n xs = length (filter (aux2 n) xs)
 
 -- 7. Dobra apenas os números pares da lista
-dobrarPares xs = undefined
+aux3 x = x `mod` 2 == 0
+aux4 x = x*2
+dobrarPares [] = []
+dobrarPares (x:xs) = map aux4 (filter (aux3) xs) 
 
 -- 8. Verifica se todos os elementos da lista são positivos
-todosPositivos xs = undefined
+todosPositivos [] = True
+todosPositivos (x:xs) = if x < 0 then False else todosPositivos xs
 
 -- 9. Soma todos os múltiplos de 3 da lista
-somaMultiplosDe3 xs = undefined
+aux5 x = x `mod` 3 == 0
+somaMultiplosDe3 xs = foldr (+) 0 (filter (aux5) xs)
 
 -- 10. Insere um elemento em uma lista ordenada mantendo a ordem
-inserirOrdenado e xs = undefined
+inserirOrdenado e [] = [e]  
+inserirOrdenado e (x:xs) = if e <= x then e:x:xs else x : inserirOrdenado e xs
 
 -- 11. Converte todas letras minúsculas em maiúsculas
-maiusculas s = undefined
+maiusculas s = map toUpper s
 
 -- 12. Conta o número de vogais em uma string
 contaVogais s = undefined
